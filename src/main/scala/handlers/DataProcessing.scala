@@ -27,7 +27,7 @@ class DataProcessing ()   {
     hosts.count()
   }
 
-  def errorsCount (df: DataFrame, errorCode: Int): Long = {
+  def getErrorsCount (df: DataFrame, errorCode: Int): Long = {
 
     val errors = df.where(col("Codigo") === errorCode)
 
@@ -35,7 +35,7 @@ class DataProcessing ()   {
 
   }
 
-  def mostCausedErrors (df: DataFrame, errorCode: Int): DataFrame = {
+  def getMostCausedErrors (df: DataFrame, errorCode: Int): DataFrame = {
     df.filter(col("Codigo") === errorCode)
       .groupBy("Host")
       .count()
@@ -43,14 +43,14 @@ class DataProcessing ()   {
 
   }
 
-  def numberErrorsDay (df: DataFrame, file: DataFrame, errorCode: Int): DataFrame = {
+  def getNumberErrorsDay (df: DataFrame, file: DataFrame, errorCode: Int): DataFrame = {
 
     df.filter(col("Codigo") === errorCode)
       .withColumn("Dia", regexp_extract(file("value"), ".*\\[(\\d\\d)", 1))
       .groupBy(col("Dia")).count().sort(col("Dia").asc)
   }
 
-  def totalBytes (df: DataFrame): DataFrame = {
+  def getTotalBytes (df: DataFrame): DataFrame = {
 
     df.select(col("Tamanho"))
       .agg(sum("Tamanho"))
