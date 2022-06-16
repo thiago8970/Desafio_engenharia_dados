@@ -10,7 +10,7 @@
     <version>1.0.0</version>
 
     <properties>
-        <spark.version>2.3.0</spark.version>
+        <spark.version>3.0.1</spark.version>
         <scala.short.version>2.11</scala.short.version>
         <scala.full.version>2.11.12</scala.full.version>
     </properties>
@@ -40,11 +40,6 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.10</version>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.3.3</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
